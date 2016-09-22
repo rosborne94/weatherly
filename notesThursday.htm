@@ -1,0 +1,26 @@
+<!-- textbox input -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+        </div>
+    </div>
+
+    <!-- event handlers for textbox -->
+    <script>
+    function lookUpWeatherForPostalCode_Click(){ 
+    var pdcode = $("#postalCode").val(); 
+    console.log("Value of postal code " + pcode);
+    }
+
+    // document ready for textbox
+    $(function() { 
+    $("#lookupWeatherForPostalCode").on("click", lookupWeatherForPostalCode_Click) 
+    });
+    </script>
+
+
+    <!-- controlling URL paramters -->
+
+    <!-- passing lat,long to darksky after retrieving from Google -->
+
+    <!-- dynamically build a div -->
