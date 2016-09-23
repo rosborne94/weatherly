@@ -16,8 +16,9 @@
     <script type="text/javascript" src="weatherly.js"></script>
     <!-- weatherly css -->
     <link rel="stylesheet" type="text/css" href="weatherly.css">
+    <link rel="icon" type="image/png" sizes="96x96" href="images/favicon-96x96.png">
 
-    <title>Weatherly</title>
+    <title>Weather.ly</title>
 </head>
 
 <body>
@@ -29,22 +30,10 @@
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
       </button>
-                <a class="navbar-brand" href="#" style="font-size: 3em;">Weatherly</a>
+                <a class="navbar-brand" href="#" style="font-size: 3em;">Weather.ly</a>
             </div>
         </div>
         </div>
-        <ul class="nav navbar-nav navbar-right">
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> </span><span style="font-size:3em;" class="glyphicon glyphicon-plus"></span></a>
-                <ul class="dropdown-menu">
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Another action</a></li>
-                    <li><a href="#">Something else here</a></li>
-                    <li role="separator" class="divider"></li>
-                    <li><a href="#">Separated link</a></li>
-                </ul>
-            </li>
-        </ul>
         </div>
         <!-- /.navbar-collapse -->
         </div>
@@ -53,25 +42,31 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                Lookup Weather for Postal Code:
             </div>
             <div class="col-md-8">
-                <label>Enter a postal code: <input type="text" id="postalCode" placeholder="postal code" /></label>
-                <button type="button" id="lookupWeatherForPostalCode">Lookup</button>
+                <label><input type="text" id="postalCode" placeholder="ZIP Code or City, State" /></label>
+                <button class="btn btn-primary" type="button" id="lookupWeatherForPostalCode" onclick="testGenerateCard()">Lookup</button>
             </div>
         </div>
     </div>
-
-    <div class="container pull-right">
-        <div class="col-md-3 city1" style="margin: 10px; height: 50%;">City 1</div>
-        <div class="col-md-3 city2" style="background-color: grey; margin: 10px; height: 50%;">City 2</div>
-        <div class="col-md-3 city3" style="background-color: grey; margin: 10px; height: 50%;">City 3</div>
+    <div class="container">
+        <!-- Create a div to hold the new divs -->
+        <div class="row" id="cards">
+        </div>
     </div>
-    <br/>
-    <div class="container pull-right">
-        <div class="col-md-3 city4" style="background-color: grey; margin: 10px; height: 50%;">City 4</div>
-        <div class="col-md-3 city5" style="background-color: grey; margin: 10px; height: 50%;">City 5</div>
-        <div class="col-md-3 city6" style="background-color: grey; margin: 10px; height: 50%;">City 6</div>
+
+    <!-- Create a div to hold our template. We'll get the inner HTML with jQuery. -->
+    <!-- This makes it easier for us to make quick changes without changing code. -->
+
+    <div id="templateDiv" style="display: none">
+        <div class="col-md-3" id="removeCard" style="margin: 20px; border-radius: 10px; border: 1px solid #333333; height: 50%; background-image: url(images/sunny.jpg); background-size: 318px; background-repeat: no-repeat;">
+        <button class="btn btn-danger" type="button"><span class="glyphicon glyphicon-remove"></span></button>
+            <div class="row" style="text-align: center; height: 140px; padding-top: 50px; color: red;">@@NAME@@</div>
+            <div class="row" style="padding-top: 30px; text-align: center; border-top: 2px solid black; border-bottom: 2px solid black; height: 86px; color: red;">@@TEMP@@</div>
+            <div class="row col-md-4" style="padding: 10px 10px 10px 10px; margin: 0 auto; border-right: solid 1px black; text-align: center; height: 50px; color: red;">@@MIN@@</div>
+            <div class="row col-md-4" style="padding: 10px 10px 10px 10px; margin: 0 auto; border-right: solid 1px black; text-align: center; height: 50px; color: red;">@@HIGH@@</div>
+            <div class="row col-md-4" style="padding: 10px 10px 10px 10px; margin: 0 auto; text-align: center; height: 50px; color: red;">@@RAINCHANCE@@</div>
+        </div>
     </div>
 </body>
 
